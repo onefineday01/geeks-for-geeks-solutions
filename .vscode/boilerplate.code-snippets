@@ -1,0 +1,18 @@
+{
+	"boilerplate": {
+		"prefix": "boilerplate code",
+		"body": [
+			"/*",
+			"",
+			"Problem Name :",
+			"",
+			"Link : ",
+			"",
+			"*/",
+			"",
+			"",
+			""
+		],
+		"description": "My default cpp file"
+	}
+}
