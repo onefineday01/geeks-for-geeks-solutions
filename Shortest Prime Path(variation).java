@@ -2,28 +2,23 @@
 
 Problem Name : Shortest Prime Path
 
-Link : https://practice.geeksforgeeks.org/problems/1646a9b5169d7571cf672f2a31533af083d1f479/0
+Link : https://practice.geeksforgeeks.org/problems/2b9978653b4d905d12c04387a60e16464ef40733/1
 
 */
-
 import java.util.*;
-class Solution
-{
-    int[] prime;
-    Solution()
-    {
+class Solution{
+    int solve(int n1,int n2){
         int n = 10000;
-        prime = new int[n+1];
-        Arrays.fill(prime, 1);
-        prime[0] = prime[1] = 0;
-        for(int p = 2; p * p <= n; p++) 
-            if(prime[p] == 1) 
-                for(int i = p * p; i <= n; i += p) 
-                    prime[i] = 0;
-        
-    }
-    
-    public int shortestPath(int n1,int n2){
+        boolean prime[] = new boolean[n];
+        Arrays.fill(prime, true);
+        prime[0] = prime[1] = false;
+        for(int p = 2; p * p < n; p++) {
+            if(prime[p]) {
+                for(int i = p * p; i < n; i += p) {
+                    prime[i] = false;
+                }
+            }
+        }
         boolean arr[] = new boolean[10000];
         Queue<Integer> q = new LinkedList<>();
         q.add(n1);
@@ -45,11 +40,11 @@ class Solution
                 for(int j = 0; j < 10; j++) {
                     if(i == 10000 && j == 0) continue;
                     int newnum = pre*(i) + j*(i/10) + suff;
-                    if(prime[newnum] == 1 && !arr[newnum]) q.add(newnum);
+                    if(prime[newnum] && !arr[newnum]) q.add(newnum);
                     arr[newnum] = true;
                 }
             }
         }
-        return -1;
+        return 0;
     }
 }
